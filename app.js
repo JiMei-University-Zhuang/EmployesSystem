@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
+
+// API文档
+app.use('/apidoc', express.static(path.join(__dirname, 'apidoc')));
 
 // 数据库
 const db = require("./models");
@@ -53,4 +57,5 @@ app.use((err, req, res, next) => {
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`服务器运行在端口 ${PORT}.`);
+  console.log(`API文档地址: http://localhost:${PORT}/apidoc`);
 }); 

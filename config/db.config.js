@@ -1,10 +1,6 @@
 module.exports = {
-  HOST: "127.0.0.1",
-  USER: "root",
-  PASSWORD: "",
-  DB: "express_db",
-  port: 3306,
-  dialect: "mysql",
+  dialect: "sqlite",
+  storage: "./database.sqlite",  // SQLite数据库文件路径
   pool: {
     max: 5,
     min: 0,
